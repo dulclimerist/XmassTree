@@ -6,8 +6,8 @@ public class Validator {
             int num = Integer.parseInt(param);
             if(num < 1) {
                 System.out.println("Podałeś liczbę ujemną! Podaj dodatnią:");
+                return false;
             }
-
         }catch (Exception e) {
             System.out.println("Podaj poprawną liczbę całkowitą dodatnią:");
             return false;
@@ -21,5 +21,13 @@ public class Validator {
             return false;
         }
         return true;
+    }
+
+    public static boolean isProperDirection(String param) {
+        if(param.matches("^[udlrUDLR]$")) {
+            return true;
+        }
+        System.out.println("Podaj poprawny znak kierunku choinki:");
+        return false;
     }
 }

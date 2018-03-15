@@ -22,4 +22,23 @@ public class InitialParametes {
                 return param;
         }
     }
+
+    public XmassTreePrinter.Direction getDirection(){
+        while (true) {
+            String param = scanner.next();
+            if(Validator.isProperDirection(param))
+                if(param.equals("u") || param.equals("U")){
+                    return XmassTreePrinter.Direction.UP;
+                }
+                else if(param.equals("l") || param.equals("L")){
+                    return XmassTreePrinter.Direction.LEFT;
+                }
+                else if(param.equals("r") || param.equals("R")){
+                    return XmassTreePrinter.Direction.RIGHT;
+                }
+                else if(param.equals("d") || param.equals("D")){
+                    return XmassTreePrinter.Direction.DOWN;
+                }
+        }
+    }
 }

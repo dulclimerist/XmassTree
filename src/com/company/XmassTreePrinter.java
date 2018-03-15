@@ -11,8 +11,10 @@ public class XmassTreePrinter {
     private String treeCharacter;
     private int sizeOfTree;
     private Direction direction;
+    private InitialParametes parametes;
 
-    public XmassTreePrinter() {
+    XmassTreePrinter() {
+        this.parametes = new InitialParametes();
         this.treeCharacter = this.getTreeCharacter();
         this.sizeOfTree = this.getSizeOfTree();
         this.direction = this.getDirection();
@@ -20,10 +22,19 @@ public class XmassTreePrinter {
     }
 
     public void printTree(){
-        this.printTreeUp();
-        this.printTreeRight();
-        this.printTreeDown();
-        this.printTreeLeft();
+        switch (direction){
+            case UP:
+                this.printTreeUp();
+                break;
+            case DOWN:
+                this.printTreeDown();
+                break;
+            case LEFT:
+                this.printTreeLeft();
+                break;
+            case RIGHT:
+                this.printTreeRight();
+        }
     }
 
     private void printTreeUp(){
@@ -51,15 +62,22 @@ public class XmassTreePrinter {
     }
 
     private int getSizeOfTree(){
-        return 10;
+        System.out.println("Podaj wielkość choinki:");
+        return parametes.getIntParameter();
     }
 
     private String getTreeCharacter(){
-        return "*";
+        System.out.println("Podaj znak do rysowania choinki:");
+        return parametes.getCharacterParameter();
     }
 
     private Direction getDirection(){
-        return Direction.UP;
+        System.out.println("Podaj skierowanie choinki:\n" +
+                "u/U - do góry\n" +
+                "d/D - w dół\n" +
+                "l/L - w lewo\n" +
+                "r/R - w prawo:");
+        return parametes.getDirection();
     }
 
     private void drawLineUpDown(int levelFromBottom) {
